@@ -3,6 +3,7 @@ import { FaRegSun } from "react-icons/fa6";
 import { IoMoon } from "react-icons/io5";
 import NavLink from "./NavLink"
 import { Link } from "react-router-dom";
+import { RiMenuFill } from "react-icons/ri";
 
 function Navbar() {
   return (
@@ -17,7 +18,27 @@ function Navbar() {
         <div className="navbar con-align">
           {/* start */}
           <div className="navbar-start">
-            <Link to="/" className="btn btn-primary text-3xl">C</Link>
+            <div className="hidden lg:flex">
+              <Link to="/" className="btn  btn-primary text-3xl">
+                C
+              </Link>
+            </div>
+            <div className="dropdown lg:hidden">
+              <button tabIndex={0} role="button" className=" m-1">
+                <RiMenuFill />
+              </button>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <a>Item 1</a>
+                </li>
+                <li>
+                  <a>Item 2</a>
+                </li>
+              </ul>
+            </div>
           </div>
           {/* center */}
           <div className="navbar-center hidden lg:flex">
