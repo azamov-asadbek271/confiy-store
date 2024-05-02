@@ -1,5 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 
 // pages
 import HomeLayout from "./pages/HomeLayout";
@@ -14,16 +17,23 @@ import Checkout from "./pages/Checkout";
 import Register from "./pages/Register";
 import Error from "./pages/Error";
 import ProtectedRouter from "./pages/ProtectedRouter";
-
+// context
+import { useContext } from "react";
+import { GlobalContext } from "./context/useContextGlobal";
+import { useEffect } from "react";
+ 
+// firebase
+import { auth } from "./fairbase/FairbaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
-
+  const {user,dispatch,authChange} = useContext(GlobalContext)
   // sahifalar
   const routes = createBrowserRouter([
     {
       path: "/",
       element: (
-        <ProtectedRouter user={true}>
+        <ProtectedRouter user={user}>
           <HomeLayout />
         </ProtectedRouter>
       ),
@@ -65,18 +75,29 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: user ? <Navigate to="/" /> : <Login />,
       errorElement: <Error />,
     },
     {
       path: "/register",
       errorElement: <Error />,
-      element: <Register />,
+      element: user ? <Navigate to="/" /> : <Register />,
     },
   ]);
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+     dispatch({
+      type:"SIGNI_USER",
+      payload:user
+     })
+     dispatch({
+       type: "AUTH_CHANGE",
+     });
+    });
+  },[])
 
   // div
-  return <RouterProvider router={routes}/>
+  return <>{authChange && <RouterProvider router={routes} />}</>; 
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const links = [
   {
     id: 1,
@@ -32,22 +32,22 @@ const links = [
   },
 ];
 
-function NavLink() {
+function NavLinks() {
   return (
-    <div >
+    <div>
     {links.map((link) => {
         return (
-          <Link
-            className="px-4 py-2 hover:bg-neutral-content rounded "
-            key={link.id}
-            to={link.link}
-          >
-            {link.text}
-          </Link>
+          <li key={link.id}>
+            <NavLink
+              to={link.link} className="capitalize"
+            >
+              {link.text}
+            </NavLink>
+          </li>
         );
     })}
     </div>
   )
 }
 
-export default NavLink
+export default NavLinks
