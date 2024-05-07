@@ -28,6 +28,7 @@ import { auth } from "./fairbase/FairbaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 // loaders
 import { loader as LandingLoader } from "./pages/Langding";
+import { loader as SingleProductLoader } from "./pages/SingleProduct";
 
 function App() {
   const {user,dispatch,authChange} = useContext(GlobalContext)
@@ -45,20 +46,17 @@ function App() {
         {
           index: true,
           element: <Langding />,
-          errorElement:<ErrorElement/>,
-          loader:LandingLoader,
+          errorElement: <ErrorElement />,
+          loader: LandingLoader,
         },
         {
           path: "/products",
           element: <Products />,
         },
         {
-          path: "/products",
-          element: <Products />,
-        },
-        {
-          path: "/singleProduct/:id",
+          path: "/product/:id",
           element: <SingleProduct />,
+          loader: SingleProductLoader,
         },
         {
           path: "/about",
