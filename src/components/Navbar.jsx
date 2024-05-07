@@ -34,8 +34,8 @@ function Navbar() {
     .catch((error) => console.log(error))
   }
   return (
-    <div>
-      <div className="top bg-neutral ">
+    <div >
+      <div className="top bg-neutral">
         <div className="con-align flex lg:justify-end justify-center gap-6 py-2 items-center">
           <p className="text-white">asadbek</p>
           <button onClick={loginOutFunc} className="btn btn-xs btn-outline btn-primary">LOGOUT</button>

@@ -21,10 +21,13 @@ import ProtectedRouter from "./pages/ProtectedRouter";
 import { useContext } from "react";
 import { GlobalContext } from "./context/useContextGlobal";
 import { useEffect } from "react";
- 
+//  components
+import { ErrorElement } from "./components";
 // firebase
 import { auth } from "./fairbase/FairbaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
+// loaders
+import { loader as LandingLoader } from "./pages/Langding";
 
 function App() {
   const {user,dispatch,authChange} = useContext(GlobalContext)
@@ -42,6 +45,8 @@ function App() {
         {
           index: true,
           element: <Langding />,
+          errorElement:<ErrorElement/>,
+          loader:LandingLoader,
         },
         {
           path: "/products",
