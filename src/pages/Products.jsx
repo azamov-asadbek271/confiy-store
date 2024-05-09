@@ -1,4 +1,4 @@
-import ProductsContainer from "../components/ProductsContainer"
+import { Filter,ProductsContainer } from "../components"
 import { customFetch } from "../uitls"
  const url = "/products"
 export const loader = async () => {
@@ -11,8 +11,9 @@ function Products() {
   return (
     <div className="con-align">
       {/* filter */}
+      <Filter/>
       {/* product Container */}
-      <ProductsContainer />
+      <ProductsContainer/>
       {/* paginationContainer */}
     </div>
   );

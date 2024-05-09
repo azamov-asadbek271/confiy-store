@@ -19,6 +19,11 @@ function ProductsList() {
                   alt={title}
                   className="h-24 w-24 sm:h-32 sm:w-32 object-cover"
                 />
+                <div className="ml-0 sm:ml-16">
+                  <h3 className="capitalize font-medium text-lg">{title}</h3>
+                  <h4 className="capitalize text-neutral-content text-md">{company}</h4>
+                </div>
+                <p className=" font-medium ml-0 sm:ml-auto">{dollarAmount}</p>
               </Link>
             );
         })}
