@@ -34,7 +34,7 @@ function Navbar() {
     .catch((error) => console.log(error))
   }
   return (
-    <div >
+    <div className="mb-16" >
       <div className="top bg-neutral">
         <div className="con-align flex lg:justify-end justify-center gap-6 py-2 items-center">
           <p className="text-white">asadbek</p>

@@ -1,5 +1,6 @@
 
 function InputForm({name,type,label,size}) {
+  
   return (
     <div className="form-control">
       <label className=" w-full">
@@ -10,7 +11,7 @@ function InputForm({name,type,label,size}) {
           name={name}
           type={type}
           placeholder="Type here"
-          className={`input input-bordered w-full max-w-xs${size}`}
+          className={`input input-bordered w-full max-w-xs ${size}`}
         />
       </label>
     </div>
