@@ -18,7 +18,9 @@ function darkLocalstore() {
 // signOut
 import { signOut } from "firebase/auth";
 import { auth } from "../fairbase/FairbaseConfig";
+import { useSelector } from "react-redux";
 function Navbar() {
+  
   const [theme,setTheme]  = useState(darkLocalstore())
   function handleClick  () {
  const NewThemes = theme == themes.winter ? themes.dracula: themes.winter

@@ -6,8 +6,8 @@ function HomeLayout() {
  
   return (
     <div>
-     <Navbar/>
-      <main>
+      <Navbar />
+      <main className="con-align">
         <Outlet />
       </main>
     </div>

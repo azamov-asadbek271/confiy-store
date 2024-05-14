@@ -30,15 +30,18 @@ import { onAuthStateChanged } from "firebase/auth";
 import { loader as LandingLoader } from "./pages/Langding";
 import { loader as SingleProductLoader } from "./pages/SingleProduct";
 import { loader as ProductsLoader } from "./pages/Products";
+import { useSelector } from "react-redux";
+// action
+import {action as RegisterAction} from "./pages/Register"
 
 function App() {
-  const {user,dispatch,authChange} = useContext(GlobalContext)
+  // const {user} = useSelector((state) => state.cartUser)
   // sahifalar
   const routes = createBrowserRouter([
     {
       path: "/",
       element: (
-        <ProtectedRouter user={user}>
+        <ProtectedRouter user={true}>
           <HomeLayout />
         </ProtectedRouter>
       ),
@@ -80,29 +83,30 @@ function App() {
     },
     {
       path: "/login",
-      element: user ? <Navigate to="/" /> : <Login />,
+      element: true ? <Navigate to="/" /> : <Login />,
       errorElement: <Error />,
     },
     {
       path: "/register",
       errorElement: <Error />,
-      element: user ? <Navigate to="/" /> : <Register />,
+      element: true ? <Navigate to="/" /> : <Register />,
+      action: RegisterAction,
     },
   ]);
-  useEffect(()=>{
-    onAuthStateChanged(auth, (user) => {
-     dispatch({
-      type:"SIGNI_USER",
-      payload:user
-     })
-     dispatch({
-       type: "AUTH_CHANGE",
-     });
-    });
-  },[])
+  // useEffect(()=>{
+  //   onAuthStateChanged(auth, (user) => {
+  //    dispatch({
+  //     type:"SIGNI_USER",
+  //     payload:user
+  //    })
+  //    dispatch({
+  //      type: "AUTH_CHANGE",
+  //    });
+  //   });
+  // },[])
 
   // div
-  return <>{authChange && <RouterProvider router={routes} />}</>; 
+  return <>{ <RouterProvider router={routes} />}</>; 
 }
 
 export default App;

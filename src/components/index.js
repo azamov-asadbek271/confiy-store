@@ -9,5 +9,7 @@
  export { default as FormRange } from "./FormRange";
  export { default as FormCHeckbox } from "./FormCHeckbox";
  export { default as PaginationContainer } from "./PaginationContainer";
+ export { default as CartItemList } from "./CartItemList";
+ export { default as CartTotals } from "./CartTotals";
 
  

@@ -3,6 +3,8 @@ import { Link, useLoaderData } from "react-router-dom"
 import { customFetch } from "../uitls";
 import { formatPrice } from "../uitls";
 import { generateAmountOptions } from "../uitls";
+import {addItem} from "../features/cart/CartSlice"
+import { useDispatch } from "react-redux";
 
 
   export const loader = async ({params}) => {
@@ -12,11 +14,28 @@ import { generateAmountOptions } from "../uitls";
   };
 
 function SingleProduct() {
+  const dispatch = useDispatch()
    const {products} = useLoaderData()
    const { title, image, price, description,colors,company } = products.attributes;
      const dollarAmount = formatPrice(price);
      const [productColor,setProductColor] = useState(colors[0])
      const [amount,setAmount] = useState()
+
+    const  cartProduct = {
+    cartID: products.id + productColor,
+    productID: products.id,
+    image,
+    title,
+    price,
+    amount : Number(amount),
+    productColor,
+    company,
+    }
+    const addToCart = () => {
+      dispatch(addItem({
+        product:cartProduct,
+      }))
+    }
   return (
     <section className="con-align mb-20 mt-28">
       <div className="text-md breadcrumbs">
@@ -73,7 +92,7 @@ function SingleProduct() {
           </div>
           <div className="mt-10">
             <button
-              onClick={() => console.log("add to bag")}
+              onClick={addToCart}
               className="btn btn-secondary btn-md"
             >
               Add to Bag

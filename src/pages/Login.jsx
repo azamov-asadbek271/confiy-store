@@ -2,10 +2,13 @@ import {useLogin} from "../hook/useLogin"
 import { InputForm,SubmitBtn } from "../components";
 import { Form, Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { useSelector } from "react-redux";
 
 
    
    function Login() {
+    // const { store } = useSelector((store) => store);
+    // console.log(store);
       const { loginWithGoogle } = useLogin();
      return (
        <div className="h-screen grid place-items-center bg-base-300">
