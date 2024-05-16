@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
      return (
        <div className="h-screen grid place-items-center bg-base-300">
          <div className="card w-96 p-8 bg-base-100 shadow-lg ">
-          <h2 className="text-center font-bold text-3xl mb-2">Login</h2>
+           <h2 className="text-center font-bold text-3xl mb-2">Login</h2>
            {/* input */}
            <Form className=" flex flex-col gap-y-4 ">
              {/* <InputForm type="text" label=" Name:" name="Name" />
@@ -22,8 +22,10 @@ import { useSelector } from "react-redux";
              <InputForm type="password" label=" Password:" name="Password" />
            </Form>
            {/* button */}
-           <div className="mt-6"></div>
-           <SubmitBtn text="Login"/>
+           <div className="mt-6 mb-5">
+             <SubmitBtn text="Login" />
+           </div>
+
            <button
              onClick={loginWithGoogle}
              className="btn btn-secondary flex items-center"
@@ -31,9 +33,14 @@ import { useSelector } from "react-redux";
              <FcGoogle className="text-3xl" />
              <span className="text-2xl">Google</span>
            </button>
-           <button className="btn btn-secondary mt-4 text-xl">Guest User</button>
-           <p className="text-center mt-3"> Not a memeber yet ?
-            <Link to="/register" className="capitalize link-primary"> register</Link>
+
+           <p className="text-center mt-3">
+             {" "}
+             Not a memeber yet ?
+             <Link to="/register" className="capitalize link-primary">
+               {" "}
+               register
+             </Link>
            </p>
          </div>
        </div>
