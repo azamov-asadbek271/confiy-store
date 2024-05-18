@@ -34,12 +34,12 @@ const links = [
 
 function NavLinks() {
   return (
-    <div>
+    <div className="flex">
     {links.map((link) => {
         return (
           <li key={link.id}>
             <NavLink
-              to={link.link} className="capitalize"
+              to={link.link} className="capitalize "
             >
               {link.text}
             </NavLink>

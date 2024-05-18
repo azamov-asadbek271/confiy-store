@@ -2,7 +2,8 @@ import { useDispatch } from "react-redux";
 import { editItem, removeItem } from "../features/cart/CartSlice";
 import { formatPrice, generateAmountOptions } from "../uitls";
 
-function CartItem({ cartItem }) {
+function 
+CartItem({ cartItem }) {
   const dispatch = useDispatch();
   const { cartID, title, price, image, amount, company, productColor } =
     cartItem;

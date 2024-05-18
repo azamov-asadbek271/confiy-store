@@ -66,7 +66,7 @@ function Navbar() {
           </div>
           {/* center */}
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal">
+            <ul className="menu menu-horizontal flex">
             <NavLinks/>
             </ul>
           </div>
